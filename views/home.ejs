@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/f9e99e72a3.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="heading-todo" class="border-bottom">To-Do App</h2>
+    <form class="container" method="POST" action="/add-task">
+        <div class="description border-bottom width-100">
+            <h6 class="font-props">Description</h6>
+            <textarea name="task" id="" cols="30" rows="3" placeholder="What do you need to do?"></textarea>
+        </div>
+        <div class="contain-cat-date border-bottom width-100">
+            <div class="category">
+                <h6 class="font-props">Category</h6>
+                <div class="dropdown">
+                    <select name="category" id="">
+                        <option  selected disabled hidden>Choose a category</option>
+                        <option>School</option>
+                        <option>Work</option>
+                        <option>Personal</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="date">
+                <h6 class="font-props">Due Date</h6>
+                <input type="date" name="dueDate" id="">
+            </div>
+            
+        </div>
+        <div class="buttons width-100 center">
+            <button id="add-task">
+                <i class="fas fa-plus"></i>
+                <span>Add Task</span>
+            </button>
+            <button id="delete-task">
+                <i class="fas fa-trash-alt"></i>
+                <span >Delete Task(s)</span>
+            </button>
+        </div>
+
+        <div class="tasks width-100">
+            <% for(let i of tasks_list) {  %>
+            <li class="task">
+               
+                <div class="check-task">
+                    <input type="checkbox" name="isCheckboxEnabled" id="">
+                </div>
+                <div class="task-info">
+                    <div class="task-description">
+                        <span class="font-props"> <%= i.task %></span>
+                        <div>
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="date-display class="font-props""> <%= i.dueDate%> </span>
+                        </div>
+                    </div>
+                    <div class="task-tag" data-type=" <%=i.category%> ">
+                        <%= i.category %>
+                    </div>
+                </div>
+            </li>
+            <% } %>
+            
+        </div>
+
+
+    </form>
+    <script src="/js/script.js"></script>
+</body>
+</html>
