@@ -1,5 +1,5 @@
 const task_tags=$(".task-tag");
-// console.log(task_tags);
+
 for(let task of task_tags){
     
     if($(task).attr("data-type") == " Personal ")

@@ -11,16 +11,16 @@
 </head>
 <body>
     <h2 id="heading-todo" class="border-bottom">To-Do App</h2>
-    <form class="container" method="POST" action="/add-task">
+    <form class="container" method="POST" action="">
         <div class="description border-bottom width-100">
             <h6 class="font-props">Description</h6>
-            <textarea name="task" id="" cols="30" rows="3" placeholder="What do you need to do?"></textarea>
+            <textarea  name="task" id="" cols="30" rows="3" placeholder="What do you need to do?"></textarea>
         </div>
         <div class="contain-cat-date border-bottom width-100">
             <div class="category">
                 <h6 class="font-props">Category</h6>
                 <div class="dropdown">
-                    <select name="category" id="">
+                    <select  name="category" id="">
                         <option  selected disabled hidden>Choose a category</option>
                         <option>School</option>
                         <option>Work</option>
@@ -31,34 +31,40 @@
 
             <div class="date">
                 <h6 class="font-props">Due Date</h6>
-                <input type="date" name="dueDate" id="">
+                <input  type="date" name="dueDate" id="">
             </div>
             
         </div>
+    
         <div class="buttons width-100 center">
-            <button id="add-task">
-                <i class="fas fa-plus"></i>
-                <span>Add Task</span>
-            </button>
-            <button id="delete-task">
-                <i class="fas fa-trash-alt"></i>
-                <span >Delete Task(s)</span>
-            </button>
+            
+                <button formaction="/add-task" id="add-task">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Task</span>
+                </button>
+            
+            
+                <button formaction="/delete-task" id="delete-task">
+                    <i class="fas fa-trash-alt"></i>
+                    <span >Delete Task(s)</span>
+                </button>
+            
         </div>
-
+        
+    
         <div class="tasks width-100">
             <% for(let i of tasks_list) {  %>
-            <li class="task">
-               
+            <li class="task" id="<%=i._id%>">
+                
                 <div class="check-task">
-                    <input type="checkbox" name="isCheckboxEnabled" id="">
+                    <input type="checkbox" name="checkedCb" value="<%=i._id%>" >
                 </div>
                 <div class="task-info">
                     <div class="task-description">
                         <span class="font-props"> <%= i.task %></span>
                         <div>
                             <i class="fas fa-calendar-alt"></i>
-                            <span class="date-display class="font-props""> <%= i.dueDate%> </span>
+                            <span class="date-display class="font-props""> <%= i.dueDate.toDateString()%> </span>
                         </div>
                     </div>
                     <div class="task-tag" data-type=" <%=i.category%> ">
@@ -69,9 +75,9 @@
             <% } %>
             
         </div>
-
-
     </form>
+
+    
     <script src="/js/script.js"></script>
 </body>
 </html>
